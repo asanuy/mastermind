@@ -74,4 +74,13 @@ public class GameControllerIntegrationTest {
 
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }
+
+    @Test
+    public void whenTestGuess_ThenReturnOk() {
+
+        ResponseEntity<?> response =
+                restTemplate.exchange(createURL("/games/guess?pegColors=YELLOW,BLACK,BLUE,BLUE"), HttpMethod.GET, new HttpEntity<>(null, new HttpHeaders()), String.class);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
 }

@@ -6,10 +6,6 @@ public class CodePegDTO {
 
     public CodePegDTO() {}
 
-    public CodePegDTO(PegColor pegColor) {
-        this.pegColor = pegColor;
-    }
-
     private PegColor pegColor;
 
     public PegColor getPegColor() {

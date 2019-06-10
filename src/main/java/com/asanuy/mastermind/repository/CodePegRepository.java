@@ -8,4 +8,5 @@ public interface CodePegRepository {
 
     List<CodePeg> findByGameId(Long id);
     CodePeg findById(Long id);
+    List<CodePeg> findByLastGame();
 }

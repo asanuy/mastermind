@@ -24,4 +24,9 @@ public class CodePegRepositoryImpl implements CodePegRepository {
     public CodePeg findById(Long id) {
         return entityManager.find(CodePeg.class, id);
     }
+
+    @Override
+    public List<CodePeg> findByLastGame() {
+        return entityManager.createQuery("SELECT cp FROM CodePeg cp WHERE cp.game.deleted = false ORDER BY cp.position ASC").getResultList();
+    }
 }

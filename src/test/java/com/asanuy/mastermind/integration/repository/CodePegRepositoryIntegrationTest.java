@@ -56,4 +56,14 @@ public class CodePegRepositoryIntegrationTest {
     public void whenFindByGameId_thenReturnCodePegs() {
         assertEquals(codePegs, codePegRepository.findByGameId(game.getId()));
     }
+
+    @Test
+    @Transactional
+    public void whenFindByLastGame_thenReturnCodePegsOrderedByPosition() {
+        List<CodePeg> codePegs = codePegRepository.findByLastGame();
+
+        assertEquals(2, codePegs.size());
+        assertEquals(1, codePegs.get(0).getPosition());
+        assertEquals(2, codePegs.get(1).getPosition());
+    }
 }

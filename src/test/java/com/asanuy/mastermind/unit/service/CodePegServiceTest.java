@@ -8,6 +8,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import javax.transaction.Transactional;
+
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -33,5 +35,12 @@ public class CodePegServiceTest {
         codePegService.getCodePeg(codePegId);
 
         verify(codePegRepository, times(1)).findById(codePegId);
+    }
+
+    @Transactional
+    public void testgetByLastGame() {
+        codePegService.getByLastGame();
+
+        verify(codePegRepository, times(1)).findByLastGame();
     }
 }

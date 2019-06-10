@@ -22,4 +22,9 @@ public class CodePegServiceImpl implements CodePegService {
     public CodePeg getCodePeg(Long id) {
         return codePegRepository.findById(id);
     }
+
+    @Override
+    public List<CodePeg> getByLastGame() {
+        return codePegRepository.findByLastGame();
+    }
 }

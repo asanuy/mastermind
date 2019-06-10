@@ -8,4 +8,5 @@ public interface CodePegService {
 
     List<CodePeg> getByGame(Long id);
     CodePeg getCodePeg(Long id);
+    List<CodePeg> getByLastGame();
 }

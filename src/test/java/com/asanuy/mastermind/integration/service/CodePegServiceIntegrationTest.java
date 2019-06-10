@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -51,5 +52,16 @@ public class CodePegServiceIntegrationTest {
     public void whenGetByCodePeg_thenReturnCodePeg() {
         CodePeg codePeg = codePegs.get(0);
         assertEquals(codePeg, codePegService.getCodePeg(codePeg.getId()));
+    }
+
+    @Test
+    @Transactional
+    public void whenGetByLastGame_thenReturnLastCodePegs() {
+        List<CodePeg> codePegs = codePegService.getByLastGame();
+
+        assertFalse(codePegs.get(0).getGame().isDeleted());
+        assertEquals(2, codePegs.size());
+        assertEquals(1, codePegs.get(0).getPosition());
+        assertEquals(2, codePegs.get(1).getPosition());
     }
 }
